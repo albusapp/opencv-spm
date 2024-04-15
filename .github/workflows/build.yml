@@ -49,8 +49,8 @@ jobs:
           pip3 install pathlib
           python3 platforms/apple/build_xcframework.py \
               --iphoneos_archs=arm64 \
-              --visionos_archs=arm64 \
-              --visionsimulator_archs=x86_64,arm64 \
+              --iphonesimulator_archs=arm64 \
+              --build_only_specified_archs
               --disable-bitcode -o build
 
       - name: Zip artifact

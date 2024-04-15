@@ -3,13 +3,13 @@
 
 import PackageDescription
 
-let version = "4.9.0+14"
+let version = "4.8.1+1"
 let checksum = "219ee04857b33bdc5c0a9bef1b2854525b3dfc31140f1f2084abb05b79f293c0"
 
 let package = Package(
     name: "OpenCV",
     platforms: [
-        .macOS(.v10_13), .iOS(.v12), .macCatalyst(.v13), .visionOS(.v1)
+        .iOS(.v12)
     ],
     products: [
         .library(
@@ -18,7 +18,7 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(name: "opencv2",
-                      url: "https://github.com/yeatse/opencv-spm/releases/download/\(version)/opencv2.xcframework.zip",
+                      url: "https://github.com/mattalbus/opencv-spm/releases/download/\(version)/opencv2.xcframework.zip",
                       checksum: checksum),
         .target(
             name: "opencv2-dependencies",
@@ -26,9 +26,8 @@ let package = Package(
                 .linkedFramework("AVFoundation"),
                 .linkedFramework("CoreImage"),
                 .linkedFramework("CoreMedia"),
-                .linkedFramework("CoreVideo", .when(platforms: [.iOS, .visionOS])),
-                .linkedFramework("Accelerate", .when(platforms: [.iOS, .macOS, .visionOS])),
-                .linkedFramework("OpenCL", .when(platforms: [.macOS])),
+                .linkedFramework("CoreVideo"),
+                .linkedFramework("Accelerate"),
                 .linkedLibrary("c++")
             ]
         )
