@@ -47,7 +47,7 @@ jobs:
           git apply $GITHUB_WORKSPACE/opencv-spm/opencv.patch
           pip3 install pathlib
           python3 platforms/apple/build_xcframework.py \
-            --out out/opencv2.xcframework \
+            --out build \
             --framework_name opencv2 \
             --iphoneos_archs arm64 \
             --iphonesimulator_archs x86_64,arm64 \
@@ -56,7 +56,7 @@ jobs:
 
       - name: Zip artifact
         working-directory: opencv
-        run: zip -ry opencv2.xcframework.zip out/opencv2.xcframework
+        run: zip -ry opencv2.xcframework.zip build/opencv2.xcframework
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
